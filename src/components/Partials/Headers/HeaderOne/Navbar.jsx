@@ -1216,7 +1216,7 @@ export default function Navbar({ className, type }) {
               <Link to="/become-saller">
                 <div className="black-btn w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
                   <div className="flex space-x-2 items-center">
-                    <span className="text-sm font-600">Become a Seller</span>
+                    <span className="text-sm font-600">Become a Tipu</span>
                     <span>
                       <svg
                         className="fill-current"
