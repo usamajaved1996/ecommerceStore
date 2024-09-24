@@ -1,10 +1,30 @@
-import blog from "../../data/blogs.json";
+// import blog from "../../data/blogs.json";
+import { useState, useEffect } from "react";
 import BlogCard from "../Helpers/Cards/BlogCard";
 import DataIteration from "../Helpers/DataIteration";
 import PageTitle from "../Helpers/PageTitle";
 import Layout from "../Partials/Layout";
+import BASE_URL from "../../Network/endPoint.js";
+import axios from 'axios';
 
 export default function Blogs() {
+  const [blog, setBlog] = useState([]);
+
+  useEffect(() => {
+    getBlogs();
+  }, []);
+  const getBlogs = async () => {
+    try {
+      const res = await axios.get(BASE_URL + 'products/getBlogs');
+      let response = res.data;
+      console.log('response api', response)
+      setBlog(response)
+
+    } catch (error) {
+      console.log('err', error)
+    }
+  }
+
   return (
     <Layout childrenClasses="pt-0 pb-0">
       <div className="blogs-wrapper w-full-width">
@@ -24,9 +44,9 @@ export default function Blogs() {
           <div className="w-full">
             <div className="grid md:grid-cols-2 grid-cols-1 lg:gap-[30px] gap-5">
               <DataIteration
-                datas={blog.blogs}
+                datas={blog}
                 startLength={0}
-                endLength={blog.blogs.length}
+                endLength={blog.length}
               >
                 {({ datas }) => (
                   <div

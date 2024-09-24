@@ -1,4 +1,4 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import datas from "../../data/products.json";
 import SectionStyleFour from "../Helpers/SectionStyleFour";
 import SectionStyleOne from "../Helpers/SectionStyleOne";
@@ -12,13 +12,43 @@ import BestSellers from "./BestSellers";
 import BrandSection from "./BrandSection";
 import CampaignCountDown from "./CampaignCountDown";
 import ProductsAds from "./ProductsAds";
+import BASE_URL from "../../Network/endPoint.js";
+import axios from 'axios';
 
 export default function Home() {
-  const { products } = datas;
-  const brands = [];
-  products.forEach((product) => {
-    brands.push(product.brand);
-  });
+  
+  const [products, setProduct] = useState([]);
+  const [brands , setBrands] = useState([]);
+
+  useEffect(() => {
+    getProduct();
+    getBrand();
+  }, []);
+  const getProduct = async () => {
+    try {
+      const res = await axios.get(BASE_URL + 'products/getProducts');
+      let response = res.data;
+      console.log('response api 2', response)
+      setProduct(response)
+
+    } catch (error) {
+      console.log('err', error)
+    }
+  }
+  const getBrand = async () => {
+    try {
+      const res = await axios.get(BASE_URL + 'products/getBrands');
+      let response = res.data;
+      console.log('response getBrands 2', response)
+      const brandNames = response.map(brand => brand.name);
+      console.log(brandNames);
+      setBrands(brandNames)
+
+
+    } catch (error) {
+      console.log('err', error)
+    }
+  }
   // const [ads, setAds] = useState(false);
   // const adsHandle = () => {
   //   setAds(false);
@@ -28,7 +58,9 @@ export default function Home() {
   //   setAds(true);
   // }, []);
   return (
+
     <>
+
       <Layout>
         {/* {ads && <Ads handler={adsHandle} />} */}
         <div className="btn w-5 h-5 "></div>

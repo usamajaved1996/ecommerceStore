@@ -3,6 +3,7 @@ import Layout from "../../Partials/Layout";
 import CommentBlog from "./CommentBlog";
 
 export default function Blog() {
+
   return (
     <Layout childrenClasses="pt-0 pb-0">
       <div className="blog-page-wrapper w-full">

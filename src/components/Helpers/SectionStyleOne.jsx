@@ -16,6 +16,7 @@ export default function SectionStyleOne({
   const filterBrands = brands.filter(
     (value, index, array) => array.indexOf(value) === index
   );
+
   const [productLength] = useState(3);
   // useEffect(() => {
   //   if (window.matchMedia("(max-width: 1024px)")) {
