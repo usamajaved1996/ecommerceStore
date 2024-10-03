@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
   const getProduct = async () => {
     try {
-      const res = await axios.get(BASE_URL + 'products/getProducts');
+      const res = await axios.get(BASE_URL + 'getProducts');
       let response = res.data;
       console.log('response api 2', response)
       setProduct(response)
@@ -37,7 +37,7 @@ export default function Home() {
   }
   const getBrand = async () => {
     try {
-      const res = await axios.get(BASE_URL + 'products/getBrands');
+      const res = await axios.get(BASE_URL + 'getBrands');
       let response = res.data;
       console.log('response getBrands 2', response)
       const brandNames = response.map(brand => brand.name);

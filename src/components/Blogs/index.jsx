@@ -15,7 +15,7 @@ export default function Blogs() {
   }, []);
   const getBlogs = async () => {
     try {
-      const res = await axios.get(BASE_URL + 'products/getBlogs');
+      const res = await axios.get(BASE_URL + 'getBlogs');
       let response = res.data;
       console.log('response api', response)
       setBlog(response)
