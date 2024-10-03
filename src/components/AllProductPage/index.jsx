@@ -60,7 +60,7 @@ export default function AllProductPage() {
 
   const getProduct = async () => {
     try {
-      const res = await axios.get(BASE_URL + 'getProducts');
+      const res = await axios.get(BASE_URL + 'getAllProducts');
       let response = res.data;
       console.log('response api', response)
       setProduct(response)

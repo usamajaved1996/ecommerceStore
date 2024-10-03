@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
   const getProduct = async () => {
     try {
-      const res = await axios.get(BASE_URL + 'getProducts');
+      const res = await axios.get(BASE_URL + 'getAllProducts');
       let response = res.data;
       console.log('response api 2', response)
       setProduct(response)
